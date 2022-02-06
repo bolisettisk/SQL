@@ -22,6 +22,15 @@ group by r1.rid
 having count(*)=1);
 
 
+select distinct reviewer.name, movie.title
+from movie, reviewer, rating r1, rating r2
+where r1.rid=r2.rid and r1.mid=r2.mid
+and r1.mid = movie.mID and r1.rid = reviewer.rid
+and r1.ratingDate > r2.ratingDate
+and r1.stars > r2.stars
+group by r1.rid
+having count(*)=1;
+
 
 
 
